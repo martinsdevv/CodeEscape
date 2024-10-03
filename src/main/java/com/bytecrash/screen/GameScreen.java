@@ -4,51 +4,51 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.bytecrash.entities.Player;
+import com.bytecrash.scenes.CenaTeste;
 
 public class GameScreen implements ApplicationListener {
 
     private SpriteBatch batch;
-    private Player player;
+    private CenaTeste cenaTeste;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        player = new Player("assets/player/player.png",
-                100, 100, 64, 64, 200);
+        cenaTeste = new CenaTeste();  // Inicializa a primeira cena
         Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
     }
 
+    // renderiza a cenaTeste
     @Override
     public void render() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 
-        player.update(Gdx.graphics.getDeltaTime());
-
-        player.render(batch);
+        cenaTeste.update(Gdx.graphics.getDeltaTime());
+        cenaTeste.render(batch);
 
         batch.end();
     }
 
     @Override
     public void resize(int width, int height) {
-        // Reagir ao redimensionamento da tela, se necessário
+        return;
     }
 
     @Override
     public void pause() {
-        // Ações quando o jogo é pausado
+        return;
     }
 
     @Override
     public void resume() {
-        // Ações quando o jogo é retomado
+        return;
     }
 
+    // libera os recursos da memoria
     @Override
     public void dispose() {
         batch.dispose();
-        player.dispose();
+        cenaTeste.dispose();
     }
 }

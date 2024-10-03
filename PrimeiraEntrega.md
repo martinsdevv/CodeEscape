@@ -1,3 +1,33 @@
+## Hacking Escape
+### Equipe: ByteCrash
+
+> RPG Procedural Humano vs Máquina
+
+Hackign Escape é um RPG procedural, cujo título ainda está em aberto :/
+
+A ideia principal é uma batalha por turnos entre um hacker e uma IA
+Você, o hacker, foi absorvido magicamente por um computador, e agora tem que encontrar uma forma de se libertar!
+
+Para isso, sua tarefa é uma só: derrotar a IA maligna que te prendeu. Não será fácil! Ela é inteligente e se dividiu em várias entidades,
+que irão te atacar, e aprender com seus movimentos. Afinal, o cérebro é um só, e seu objetivo é derrotá-lo, atravessando firewalls, hackeando terminais e desvendando os segredos digitais que seu computador esconde.
+
+> Principais Mecânicas
+
+* RPG procedural - cada run é diferente da ultima, o mapa sempre muda e os inimigos também. Adapte-se!
+* Terminais de controle - Baús? Não! Aqui você deve ser um mestre dos comandos linux para evoluir!
+Cada terminal esconde segredos e itens aleatórios. Você tem duas opções: encontrar a senha pelo mapa, ou se desafiar pelo sistema de arquivos do console.
+* IA adaptativa - O cérebro por trás de tudo, a IA, irá aprender com seus ataques e se fortalecer. Você deve ser rápido (e versátil!) se quiser sobreviver. Cuidado, pois ela aprende rápido, e controla todos os inimigos.
+* Por enquanto é isso ;)
+
+> Tecnologias Utilizadas
+
+* LibGDX - Contrução de Jogos 2D em Java
+* Encog - Framework para machine learning
+* Maven - Gerenciador de dependências
+
+> class Player
+```java
+
 package com.bytecrash.entities;
 
 import com.badlogic.gdx.Gdx;
@@ -113,3 +143,36 @@ public class Player {
         return speed;
     }
 }
+
+```
+
+> class CenaTeste
+```java
+package com.bytecrash.scenes;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.bytecrash.entities.Player;
+
+public class CenaTeste {
+    private Player player;
+
+    public CenaTeste() {
+        player = new Player();
+    }
+
+    public void update(float deltaTime) {
+        player.update(deltaTime);
+    }
+
+    public void render(SpriteBatch batch) {
+        player.render(batch);
+    }
+
+    public void dispose() {
+        player.dispose();
+    }
+}
+
+```
+#### Integrantes do Projeto:
+#### Gabriel Martins; Pedro Henrique; Guilherme Vieira
