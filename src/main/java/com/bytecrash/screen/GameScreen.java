@@ -4,28 +4,41 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.bytecrash.scenes.CenaTeste;
+import com.bytecrash.scenes.CenaBase;
+import com.bytecrash.scenes.SceneManager;
+import java.util.Random;
 
 public class GameScreen implements ApplicationListener {
 
     private SpriteBatch batch;
-    private CenaTeste cenaTeste;
+    private CenaBase currentScene;
+    private SceneManager sceneManager;
 
     @Override
     public void create() {
         batch = new SpriteBatch();
-        cenaTeste = new CenaTeste();  // Inicializa a primeira cena
         Gdx.graphics.setFullscreenMode(Gdx.graphics.getDisplayMode());
+        sceneManager = new SceneManager();
     }
 
-    // renderiza a cenaTeste
+    /*private CenaBase getRandomScene() {
+        Random random = new Random();
+        int sceneNumber = random.nextInt(2); // Altere conforme o número de cenas
+        switch (sceneNumber) {
+            case 0:
+                return new Cena1();
+            default:
+                return new Cena1();
+        }
+    }*/
+
     @Override
     public void render() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 
-        cenaTeste.update(Gdx.graphics.getDeltaTime());
-        cenaTeste.render(batch);
+        sceneManager.getCurrentScene().update(Gdx.graphics.getDeltaTime());
+        sceneManager.getCurrentScene().render(batch);
 
         batch.end();
     }
@@ -49,6 +62,6 @@ public class GameScreen implements ApplicationListener {
     @Override
     public void dispose() {
         batch.dispose();
-        cenaTeste.dispose();
+        currentScene.dispose();
     }
 }
